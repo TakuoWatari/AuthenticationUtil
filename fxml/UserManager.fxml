@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.UserManagerController">
+   <children>
+      <VBox spacing="5.0">
+         <children>
+            <HBox spacing="10.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label text="- ユーザー登録 -" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="ID：" />
+                              <TextField fx:id="newUserId" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="名前：" />
+                              <TextField fx:id="newUserName" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onClickAddUserButton" text="登録" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="注意）" />
+                        <Label text="・IDには半角文字を指定してください。" />
+                        <Label text="・IDには、以下の文字は使用できません。" />
+                        <Label text="　　\ / : ? &quot; &lt; &gt; |" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="- パスワードリセット -" />
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="ID：" />
+                  <ChoiceBox fx:id="passwordResetUserChoiceBox" prefWidth="150.0" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onClickPasswordResetButton" text="変更" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="- ユーザー削除 -" />
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="ID：" />
+                  <ChoiceBox fx:id="deleteUserChoiceBox" prefWidth="150.0" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onClickDeleteUserButton" text="削除" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onClickCloseButton" text="閉じる" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

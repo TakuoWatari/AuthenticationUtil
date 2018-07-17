@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.UserInfoSettingController">
+   <children>
+      <VBox spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label text="- ユーザー情報 -" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="120.0" text="ID：" />
+                  <TextField fx:id="loginUserId" editable="false" styleClass="disable-text" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="120.0" text="名前：" />
+                  <TextField fx:id="loginUserName" />
+                  <Button mnemonicParsing="false" onAction="#onClickNameChangeButton" text="変更" />
+               </children>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="120.0" text="現在のパスワード：" />
+                              <PasswordField fx:id="loginUserPassword" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="120.0" text="新パスワード：" />
+                              <PasswordField fx:id="loginUserNewPassword" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="120.0" text="新パスワード（確認）：" />
+                              <PasswordField fx:id="loginUserNewPasswordAgain" />
+                              <Button mnemonicParsing="false" onAction="#onClickPasswordChangeButton" text="変更" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="注意）" />
+                        <Label text="・新パスワードは6文字以上の文字列を指定してください" />
+                        <VBox alignment="BOTTOM_RIGHT" prefHeight="65.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onClickCloseButtton" text="閉じる" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

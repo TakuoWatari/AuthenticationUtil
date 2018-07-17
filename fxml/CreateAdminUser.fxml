@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateAdminUserController">
+   <children>
+      <Label fx:id="toolNameLabel" alignment="CENTER" text="タイトル" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <HBox alignment="CENTER" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="- 管理者登録 -" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefWidth="300.0" spacing="8.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" text="ID：" />
+                              <TextField fx:id="adminId" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" text="名前：" />
+                              <TextField fx:id="adminName" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" text="パスワード：" />
+                              <PasswordField fx:id="adminPassword" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" text="パスワード（確認）：" />
+                              <PasswordField fx:id="adminPasswordAgain" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onClickAdminAddButton" text="登録" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="注意）" />
+                        <Label text="・IDには半角文字を指定してください。" />
+                        <Label text="・IDには、以下の文字は使用できません。" />
+                        <Label text="　　\ / : ? &quot; &lt; &gt; |" />
+                        <Label text="・パスワードは6文字以上の文字列を指定してください" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+     -fx-font-family: 'sans-serif';
+     -fx-font-size:  9pt;
+}
+.number-cloumn {
+	-fx-alignment: top-right;
+}
+.table-row-cell:empty {
+    -fx-background-color: lightyellow;
+}
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+.border-pane {
+    -fx-border-color: black ;
+    -fx-border-width: 0.3px;
+}
+.text-field:readonly {
+    -fx-background-color : lightgray;
+}
+.chart-plot-background {
+    -fx-background-color: white;
+}
