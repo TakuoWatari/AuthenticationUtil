@@ -3,6 +3,14 @@
   <groupId>org.tools</groupId>
   <artifactId>AuthenticationUtil</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <repositories>
+    <repository>
+      <id>FXMLApplicationUtility</id>
+      <url>https://github.com/TakuoWatari/FXMLApplicationUtility/</url>
+    </repository>
+  </repositories>
+
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

@@ -117,7 +117,8 @@ public class UserManager extends DataBase<User> {
 			}
 		}
 		if (loginedUser == null) {
-			throw new ApplicationException(AuthenticationMessage.W0013);
+			throw new ApplicationException(
+					Message.getMessage(AuthenticationMessage.W0013));
 		}
 		return loginedUser;
 	}
