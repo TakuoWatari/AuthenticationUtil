@@ -78,22 +78,26 @@ public class UserManagerController extends ControllerBase {
 	}
 
 	private void refreshUser() throws ApplicationException {
-		UserManager userMng = UserManager.getInstance();
+		try {
+			UserManager userMng = UserManager.getInstance();
 
-		User loginUser = (User) ApplicationContext.get(AuthenticationConst.CONTEXT_KEY_LOGIN_USER);
-		List<User> users = userMng.getUserList(loginUser);
+			User loginUser = (User) ApplicationContext.get(AuthenticationConst.CONTEXT_KEY_LOGIN_USER);
+			List<User> users = userMng.getUserList(loginUser);
 
-		users.remove(loginUser);
+			users.remove(loginUser);
 
-		this.userList.clear();
-		this.userList.addAll(users);
+			this.userList.clear();
+			this.userList.addAll(users);
 
-		if (!users.isEmpty()) {
-			this.passwordResetUserChoiceBox.setValue(users.get(0));
-			this.deleteUserChoiceBox.setValue(users.get(0));
-		} else {
-			this.passwordResetUserChoiceBox.setValue(null);
-			this.deleteUserChoiceBox.setValue(null);
+			if (!users.isEmpty()) {
+				this.passwordResetUserChoiceBox.setValue(users.get(0));
+				this.deleteUserChoiceBox.setValue(users.get(0));
+			} else {
+				this.passwordResetUserChoiceBox.setValue(null);
+				this.deleteUserChoiceBox.setValue(null);
+			}
+		} catch (IOException e) {
+			throw new ApplicationException(Message.getMessage(AuthenticationMessage.E9999, "ユーザ情報の読み込みに失敗しました。"), e);
 		}
 	}
 

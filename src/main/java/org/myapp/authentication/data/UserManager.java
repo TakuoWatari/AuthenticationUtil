@@ -1,6 +1,7 @@
 package org.myapp.authentication.data;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,11 +13,12 @@ import org.myapp.authentication.util.UserUtil;
 
 import application.constant.CommonConst;
 import application.constant.Message;
+import application.dao.BaseDAO;
 import application.exception.ApplicationException;
 import application.util.ApplicationUtil;
 import application.util.CipherManager;
 
-public class UserManager extends DataBase<User> {
+public class UserManager extends BaseDAO<User> {
 
 	/** インスタンス **/
 	private static UserManager instance;
@@ -27,8 +29,9 @@ public class UserManager extends DataBase<User> {
 	/**
 	 * インスタンス取得メソッド
 	 * @return UserManager
+	 * @throws IOException
 	 */
-	public static final synchronized UserManager getInstance() {
+	public static final synchronized UserManager getInstance() throws IOException {
 		if (cipherMng == null) {
 			cipherMng = new CipherManager("UserData");
 		}
@@ -44,20 +47,19 @@ public class UserManager extends DataBase<User> {
 	 * <p>コンストラクタ</p>
 	 * 他のクラスでインスタンスを生成できないため、
 	 * getInstanceメソッドを呼び出してインスタンスを取得する必要がある。
+	 * @throws IOException
 	 */
-	private UserManager(File saveFile) {
+	private UserManager(File saveFile) throws IOException {
 		super(saveFile);
 		load();
 	}
 
 	@Override
-	protected User parse(String data) throws ApplicationException {
+	protected User parse(String data) throws IOException {
 		String[] datas = data.split(CommonConst.TAB);
 
 		if (datas.length != AuthenticationConst.USER_DATA_COLUMNS) {
-			throw new ApplicationException (Message.getMessage(
-						AuthenticationMessage.E9999,
-						"データファイル[" + this.getSaveFileName() + "]の内容が壊れています。"));
+			throw new IOException(AuthenticationMessage.E9999);
 		}
 
 		String id = datas[0];
@@ -66,14 +68,10 @@ public class UserManager extends DataBase<User> {
 		try {
 			authority = Authority.getAuthority(Integer.parseInt(datas[2]));
 		} catch (NumberFormatException e) {
-			throw new ApplicationException (Message.getMessage(
-					AuthenticationMessage.E9999,
-					"データファイル[" + this.getSaveFileName() + "]の内容が壊れています。"));
+			throw new IOException(AuthenticationMessage.E9999);
 		}
 		if (authority == null) {
-			throw new ApplicationException (Message.getMessage(
-					AuthenticationMessage.E9999,
-					"データファイル[" + this.getSaveFileName() + "]の内容が壊れています。"));
+			throw new IOException(AuthenticationMessage.E9999);
 		}
 		String password = cipherMng.decrypt(datas[3]);
 		return new User(id, name, password, authority);
@@ -90,7 +88,6 @@ public class UserManager extends DataBase<User> {
 		buf.append(user.getAuthority().getCode());
 		buf.append(CommonConst.TAB);
 		buf.append(cipherMng.encrypt(user.getPassword()));
-		buf.append(CommonConst.LINE_SEPARATOR);
 
 		return buf.toString();
 	}
@@ -278,8 +275,9 @@ public class UserManager extends DataBase<User> {
 
 	/**
 	 * コミット処理（ユーザー情報を保存する）
+	 * @throws IOException
 	 */
-	public void commit() {
+	public void commit() throws IOException {
 		this.save();
 	}
 }
