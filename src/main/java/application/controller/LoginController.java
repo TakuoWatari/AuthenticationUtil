@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class LoginController extends ControllerBase {
@@ -68,6 +69,18 @@ public class LoginController extends ControllerBase {
 		this.toolNameLabel.setText(ApplicationUtil.getApplicationName());
 		this.loginId.setText(null);
 		this.loginPassword.setText(null);
+
+		this.loginId.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				this.loginPassword.requestFocus();
+			}
+		});
+
+		this.loginPassword.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				this.onClickLoginButton();
+			}
+		});
 
 		ApplicationContext.remove(AuthenticationConst.CONTEXT_KEY_LOGIN_USER);
 
