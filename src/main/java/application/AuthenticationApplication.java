@@ -51,7 +51,7 @@ public abstract class AuthenticationApplication extends Application implements A
 					});
 				}
 			} else {
-				show();
+				this.show();
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -78,6 +78,7 @@ public abstract class AuthenticationApplication extends Application implements A
 
 			appStage.setScene(scene);
 			appStage.setResizable(isResizable());
+			appStage.centerOnScreen();
 			appStage.show();
 
 		} catch (IOException e) {
